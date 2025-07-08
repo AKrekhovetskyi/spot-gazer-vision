@@ -1,0 +1,22 @@
+[project]
+name = "spot-gazer-vision"
+version = "0.0.1"
+description = "Computer vision service of the parking lot occupancy recognition system"
+authors = [{ name = "AKrekhovetskyi", email = "akrechovetskiy@gmail.com" }]
+license = { file = "./LICENSE" }
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["ultralytics>=8.3.162", "requests>=2.32.4"]
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.4.1"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^4.2.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
