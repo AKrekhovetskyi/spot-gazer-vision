@@ -10,3 +10,23 @@ To successfully setup and run the vision kernel, your system must meet the follo
 - Linux OS (tested on Debian-based distributions)
 - Python 3.12 or higher
 - [`poetry`](https://python-poetry.org/docs/)
+
+## Contribution
+
+Make sure to install `pre-commit` and its hooks before making any commits:
+
+```bash
+pre-commit install --install-hooks
+```
+
+Run the tests with the following command:
+
+```bash
+poetry run pytest tests -vv -s -rA
+```
+
+Sometimes it might be necessary to add the `./src` folder to the Python path so that to run the tests:
+
+```bash
+export PYTHONPATH=${PYTHONPATH}:$(pwd)/src
+```
