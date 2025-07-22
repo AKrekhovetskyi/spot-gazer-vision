@@ -57,3 +57,7 @@ class AiohttpJWTClient:
 
         decoded_refresh_token = decode(self.__refresh_token, options={"verify_signature": False})
         self._refresh_token_expiration = datetime.fromtimestamp(decoded_refresh_token["exp"], tz=UTC)
+
+    async def close(self) -> None:
+        """Shortcut for the `self.session.close`."""
+        await self.session.close()
