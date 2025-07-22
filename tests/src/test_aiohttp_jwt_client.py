@@ -77,6 +77,7 @@ async def test_client(
 async def aiohttp_jwt_client(test_client: TestClient) -> AsyncIterator[AiohttpJWTClient]:
     client = AiohttpJWTClient()
     await client.close()
+    # The `TestClient` doesn't have the `headers` attribute by default.
     test_client.headers = {}  # type: ignore[reportAttributeAccessIssue]
     client.session = test_client  # type: ignore[reportAttributeAccessIssue]
     yield client
