@@ -10,6 +10,7 @@ logger = logging.getLogger()
 logger.setLevel(CONSOLE_LOG_LEVEL)
 logging.getLogger("asyncio").setLevel(logging.WARNING)
 logging.getLogger("https").setLevel(logging.ERROR)
+logging.getLogger("faker").setLevel(logging.ERROR)
 logging.getLogger("urllib3.connectionpool").setLevel(logging.WARNING)
 
 datetime_format = "%d.%m.%Y %H:%M:%S"
