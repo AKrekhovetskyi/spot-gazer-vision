@@ -76,11 +76,11 @@ async def test_client(
 @pytest.fixture
 async def aiohttp_jwt_client(test_client: TestClient) -> AsyncIterator[AiohttpJWTClient]:
     client = AiohttpJWTClient()
-    await client.session.close()
+    await client.close()
     test_client.headers = {}  # type: ignore[reportAttributeAccessIssue]
     client.session = test_client  # type: ignore[reportAttributeAccessIssue]
     yield client
-    await client.session.close()
+    await client.close()
 
 
 class TestAiohttpJWTClient:
