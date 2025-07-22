@@ -16,6 +16,11 @@ fake = Faker()
 
 @pytest.fixture
 def auth_token_payload() -> dict[str, Any]:
+    """Simulate Simple JWT payload.
+
+    https://github.com/jazzband/djangorestframework-simplejwt/blob/master/rest_framework_simplejwt/tokens.py
+    https://github.com/jazzband/djangorestframework-simplejwt/blob/master/rest_framework_simplejwt/serializers.py
+    """
     user_pk = fake.pyint(min_value=1)
     return {
         "access": {
@@ -37,11 +42,6 @@ def auth_token_payload() -> dict[str, Any]:
 
 @pytest.fixture
 def auth_tokens(auth_token_payload: dict[str, Any]) -> dict[str, str]:
-    """Simulate Simple JWT payload.
-
-    https://github.com/jazzband/djangorestframework-simplejwt/blob/master/rest_framework_simplejwt/tokens.py
-    https://github.com/jazzband/djangorestframework-simplejwt/blob/master/rest_framework_simplejwt/serializers.py
-    """
     algorithm = "HS256"
     key = fake.pystr()
     return {
