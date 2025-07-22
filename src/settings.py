@@ -1,3 +1,5 @@
+import os
+
 CONFIDENCE = 0.1  # Confidence threshold.
 IOU = 0.7  # IoU threshold.
 
@@ -32,3 +34,7 @@ YOLO_PREDICTION_PARAMETERS = {
 # Supported values: DEBUG, INFO, WARNING, ERROR, CRITICAL.
 CONSOLE_LOG_LEVEL = "DEBUG"
 FILE_LOG_LEVEL = "DEBUG" if __debug__ else "WARNING"
+
+SPOTGAZER_URL = os.environ["SPOTGAZER_URL"]
+SERVICE_USERNAME = os.environ["SERVICE_USERNAME"]
+SERVICE_PASSWORD = os.environ["SERVICE_PASSWORD"]
