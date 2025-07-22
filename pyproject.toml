@@ -6,13 +6,22 @@ authors = [{ name = "AKrekhovetskyi", email = "akrechovetskiy@gmail.com" }]
 license = { file = "./LICENSE" }
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = ["ultralytics>=8.3.162", "requests>=2.32.4", "colorlog>=6.9.0"]
+dependencies = [
+    "ultralytics>=8.3.162",
+    "requests>=2.32.4",
+    "colorlog>=6.9.0",
+    "pyjwt>=2.10.1",
+    "aiohttp>=3.12.14",
+]
 
 [tool.poetry]
 package-mode = false
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.4.1"
+faker = "^37.4.2"
+pytest-asyncio = "^1.1.0"
+pytest-aiohttp = "^1.1.0"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^4.2.0"
@@ -24,3 +33,6 @@ build-backend = "poetry.core.masonry.api"
 [tool.pyright]
 venvPath = "."
 venv = ".venv"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
