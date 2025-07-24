@@ -1,17 +1,13 @@
 import os
 from datetime import timedelta
 
-CONFIDENCE = 0.1  # Confidence threshold.
+CONFIDENCE = 0.25  # Confidence threshold.
 IOU = 0.7  # IoU threshold.
 
 # Default classes.
 CAR = 2
 MOTORCYCLE = 3
 TRUCK = 7
-
-# The classes on the basis of which the dataset was collected.
-CLASS_CAR = 0
-CLASS_FREE = 1
 
 YOLO_PREDICTION_PARAMETERS = {
     "save": False,
