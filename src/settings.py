@@ -9,6 +9,8 @@ CAR = 2
 MOTORCYCLE = 3
 TRUCK = 7
 
+# Inference arguments:
+# https://docs.ultralytics.com/modes/predict/#inference-arguments
 YOLO_PREDICTION_PARAMETERS = {
     "save": False,
     "single_cls": False,
