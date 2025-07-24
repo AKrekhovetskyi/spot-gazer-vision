@@ -1,8 +1,8 @@
 import os
 from datetime import timedelta
 
-CONFIDENCE = 0.25  # Confidence threshold.
-IOU = 0.7  # IoU threshold.
+CONFIDENCE = 0.25
+IOU = 0.7
 
 # Default classes.
 CAR = 2
