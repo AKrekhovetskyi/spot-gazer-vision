@@ -6,7 +6,6 @@ IOU = 0.7  # IoU threshold.
 # Default classes.
 CAR = 2
 MOTORCYCLE = 3
-BUS = 5
 TRUCK = 7
 
 # The classes on the basis of which the dataset was collected.
@@ -24,7 +23,7 @@ YOLO_PREDICTION_PARAMETERS = {
     "iou": IOU,
     "imgsz": 640,
     "show_labels": False,
-    "classes": [CAR, MOTORCYCLE, BUS, TRUCK],
+    "classes": [CAR, MOTORCYCLE, TRUCK],
     "show_boxes": False,
     "verbose": False,
     "vid_stride": 10,
