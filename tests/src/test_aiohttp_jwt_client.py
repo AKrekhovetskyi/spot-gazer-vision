@@ -9,7 +9,8 @@ from aiohttp.test_utils import TestClient
 from faker import Faker
 from jwt import encode
 
-from src.aiohttp_jwt_client import TOKEN_REFRESH_URL, TOKEN_URL, AiohttpJWTClient
+from src.aiohttp_jwt_client import AiohttpJWTClient
+from src.settings import SPOTGAZER_BASE_URL, TOKEN_REFRESH_URL, TOKEN_URL
 
 fake = Faker()
 
@@ -75,7 +76,13 @@ async def test_client(
 
 @pytest.fixture
 async def aiohttp_jwt_client(test_client: TestClient) -> AsyncIterator[AiohttpJWTClient]:
-    client = AiohttpJWTClient()
+    client = AiohttpJWTClient(
+        username=fake.user_name(),
+        password=fake.password(),
+        api_token_url=TOKEN_URL,
+        api_token_refresh_url=TOKEN_REFRESH_URL,
+        base_url=SPOTGAZER_BASE_URL,
+    )
     await client.close()
     # The `TestClient` doesn't have the `headers` attribute by default.
     test_client.headers = {}  # type: ignore[reportAttributeAccessIssue]
