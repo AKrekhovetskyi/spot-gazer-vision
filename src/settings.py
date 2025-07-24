@@ -38,8 +38,8 @@ The required processing power grows significantly with every new stream.
 
 # Set separate global logging level for console and file.
 # Supported values: DEBUG, INFO, WARNING, ERROR, CRITICAL.
-CONSOLE_LOG_LEVEL = "DEBUG"
-FILE_LOG_LEVEL = "DEBUG" if __debug__ else "WARNING"
+CONSOLE_LOG_LEVEL = os.getenv("CONSOLE_LOG_LEVEL", "DEBUG")
+FILE_LOG_LEVEL = "DEBUG" if __debug__ else os.getenv("FILE_LOG_LEVEL", "WARNING")
 
 SPOTGAZER_BASE_URL = os.environ["SPOTGAZER_BASE_URL"]
 SERVICE_USERNAME = os.environ["SERVICE_USERNAME"]
