@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 
 CONFIDENCE = 0.1  # Confidence threshold.
 IOU = 0.7  # IoU threshold.
@@ -28,6 +29,12 @@ YOLO_PREDICTION_PARAMETERS = {
     "verbose": False,
     "vid_stride": 10,
 }
+
+STREAMS_USAGE_DURATION = timedelta(minutes=30)
+MAX_STREAMS = 10
+"""
+The required processing power grows significantly with every new stream.
+"""
 
 # Set separate global logging level for console and file.
 # Supported values: DEBUG, INFO, WARNING, ERROR, CRITICAL.
