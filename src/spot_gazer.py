@@ -122,12 +122,11 @@ class SpotGazer:
                     active_streams.remove(stream)
                     break
             else:
-                await self._save_occupancy(parking_streams["parking_lot_id"], detected_vehicles)
+                occupancy = await self.http_client.request_json(
+                    "/api/occupancy/",
+                    method="post",
+                    data={"parking_lot_id": parking_streams["parking_lot_id"], "occupied_spots": detected_vehicles},
+                )
+                logger.debug(occupancy)
                 # Sleep for the specified processing rate before processing the next frame
                 await asyncio.sleep(parking_streams["processing_rate"])
-
-    @staticmethod
-    async def _save_occupancy(parking_lot_id: int, occupied_spots: int) -> None:
-        # TODO @AKrekhovetskyi: make post request to the server to save predicted occupancy  # noqa: FIX002
-        # https://github.com/AKrekhovetskyi/spot-gazer-vision/issues/4
-        logger.debug("Parking lot ID %d; occupied spots: %d.", parking_lot_id, occupied_spots)
