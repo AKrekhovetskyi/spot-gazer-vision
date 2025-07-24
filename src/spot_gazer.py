@@ -23,6 +23,9 @@ SETTINGS.update({"sync": False})  # Prevent sync analytics and crashes with Ultr
 logger = logging.getLogger(__name__)
 
 
+class NoVideoStreamsAvailableError(Exception): ...
+
+
 class SpotGazer:
     """Detect parking spot occupancy in concurrent mode."""
 
@@ -54,6 +57,9 @@ class SpotGazer:
             },
         )
         parking_lot_video_streams: list[dict[str, Any]] = video_stream_sources["results"]
+        if not parking_lot_video_streams:
+            raise NoVideoStreamsAvailableError
+
         logger.info("Occupancy detection of %d parking lots has been started!", len(parking_lot_video_streams))
         self._gathered_tasks = cast(
             "list[asyncio.Future]",
