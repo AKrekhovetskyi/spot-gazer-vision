@@ -77,11 +77,11 @@ class SpotGazer:
         await self.http_client.close()
         logger.info("Detection stopped!")
 
-    @staticmethod
-    async def _deactivate_broken_stream(id_: int) -> None:
-        # TODO @AKrekhovetskyi: make post request to the server to deactivate the stream  # noqa: FIX002
-        # https://github.com/AKrekhovetskyi/spot-gazer-vision/issues/3
-        logger.warning("Parking lot stream %d is not active anymore.", id_)
+    async def _deactivate_broken_stream(self, id_: int) -> None:
+        video_stream = await self.http_client.request_json(
+            f"/api/video-stream-sources/{id_}/", method="patch", data={"is_active": int(False)}
+        )
+        logger.debug(video_stream)
 
     async def _detect_parking_occupancy(self, parking_streams: dict[str, Any]) -> None:
         logger.info("Determining the occupancy of parking lot ID %d", parking_streams["parking_lot_id"])
