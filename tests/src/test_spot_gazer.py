@@ -36,7 +36,7 @@ def video_stream_sources(faker: Faker) -> dict[str, list[dict[str, Any]]]:
                 "streams": [
                     {
                         "id": faker.pyint(),
-                        "stream_source": "https://www.youtube.com/watch?v=LcSaBafrb-w&ab_channel=LingoNetworks",
+                        "stream_source": faker.url(),
                         "is_active": True,
                         "in_use_until": None,
                     }
@@ -53,6 +53,6 @@ class TestSpotGazer:
 
             spot_gazer = SpotGazer()
             try:
-                await wait_for(spot_gazer.start_detection(datetime.now(UTC) + STREAMS_USAGE_DURATION), 10)
+                await wait_for(spot_gazer.start_detection(datetime.now(UTC) + STREAMS_USAGE_DURATION), 15)
             except (KeyboardInterrupt, TimeoutError):
                 await spot_gazer.stop_detection()
