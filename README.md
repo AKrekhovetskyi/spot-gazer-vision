@@ -9,7 +9,11 @@ To successfully setup and run the vision kernel, your system must meet the follo
 
 - Linux OS (tested on Debian-based distributions)
 - Python 3.12 or higher
-- [`poetry`](https://python-poetry.org/docs/)
+- [`poetry`](https://python-poetry.org/) and the [`poetry-dotenv-plugin`](https://github.com/pivoshenko/poetry-plugin-dotenv)
+
+```bash
+poetry self add poetry-dotenv-plugin
+```
 
 ## Contribution
 
