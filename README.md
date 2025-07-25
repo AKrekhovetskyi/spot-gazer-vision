@@ -15,7 +15,35 @@ To successfully setup and run the vision kernel, your system must meet the follo
 poetry self add poetry-dotenv-plugin
 ```
 
-## Contribution
+## 🔩 Installation and launch
+
+To run the vision service, execute the following commands in the Linux terminal:
+
+```bash
+git clone https://github.com/AKrekhovetskyi/spot-gazer-vision.git
+cd spot-gazer-vision
+```
+
+Create an `.env` file from [`.env.sample`](./.env.sample) and set the necessary variables
+
+```bash
+mv .env.sample .env
+```
+
+Install dependencies:
+
+```bash
+poetry install
+pre-commit install --install-hooks
+```
+
+Make sure the Django server of the [SpotGazer Backend](https://github.com/AKrekhovetskyi/spot-gazer-backend) service is up and running. Then run SpotGazer Vision:
+
+```bash
+poetry run python -m run_prediction
+```
+
+## 👨‍💻 Contribution
 
 Make sure to install `pre-commit` and its hooks before making any commits:
 
